@@ -1,0 +1,98 @@
+12/14/24, 15:26 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more.
+12/14/24, 15:26 - 
+12/14/24, 15:26 - +61 406 711 009: Hello
+12/14/24, 15:27 - Donut Beauty: Hello
+12/14/24, 15:27 - +61 406 711 009: Just messaging over from reddit
+12/14/24, 15:28 - +61 406 711 009: Getting my health app all recorded on my google calendar
+12/14/24, 15:28 - Donut Beauty: Hello Welcome to Donut Beauty, We're excited to have you here. How can we help you today? Whether you have a question, need assistance, or just want to learn more about our products/services, we're here to help. Let us know how we can make your day better!
+12/14/24, 15:28 - +61 406 711 009: Reddit name : ashwee79
+12/14/24, 15:31 - +61 406 711 009: ?
+12/14/24, 15:34 - Donut Beauty: Yes, as I checked both platform documentation, both have decent API that can be connected to Google API
+12/14/24, 15:36 - Donut Beauty: Withings API: Provides access to data such as weight, body fat, heart rate, sleep patterns, activity levels, and blood pressure. It uses OAuth 2.0 for authentication and supports real-time data updates via webhooks.
+Omron API: Allows access to blood pressure readings and associated fitness activity data. It also supports real-time updates and historical data queries with OAuth 2.0 authentication.
+12/14/24, 15:36 - +61 406 711 009: Can you write down properly documention on how it will need to be maintenance?
+12/14/24, 15:36 - +61 406 711 009: And cost will be $50?
+12/14/24, 15:36 - +61 406 711 009: Which currency?
+12/14/24, 15:43 - Donut Beauty: Could you please specify exactly what health metrics you want to sync to Google Calendar? For example:
+Blood pressure readings
+Weight measurements
+Sleep data
+Activity data
+Any other specific metrics?
+12/14/24, 15:43 - Donut Beauty: How frequently would you like the data to sync with Google Calendar? (Real-time, hourly, daily)?
+12/14/24, 15:44 - +61 406 711 009: For withings,weight and sleep
+12/14/24, 15:44 - +61 406 711 009: For omron: blood pressure and heart rate
+12/14/24, 15:44 - +61 406 711 009: All in real time
+12/14/24, 15:45 - Donut Beauty: What kind of calendar entries would you like to see? 
+
+Like:
+Simple readings as events
+Detailed health summaries
+Alerts for unusual readings?
+12/14/24, 15:46 - +61 406 711 009: Simple reading as events
+12/14/24, 15:52 - Donut Beauty: Okay, I've analyzed your requirements in detail, and I want to be transparent about this:
+
+1. The basic version I can offer for $200:
+Daily (not real-time) sync of your health data
+Basic calendar entries
+1 month support period
+Implementation in 2-3 days
+
+The full version for $400:
+Real-time sync
+More detailed calendar entries
+1-month support, as well
+Error notifications
+Proper documentation
+Implementation in 3-5 days
+
+I'm offering these options because I want to ensure reliability with your health data. The $50 I've mentioned earlier wouldn't allow me to create a stable, secure solution that you can rely on long-term, as now I understand scope of work better.
+
+Which option would work better for you? P.S. We can have a video call whenever would be comfortable for you.
+12/14/24, 15:53 - +61 406 711 009: We can arrange a video call
+12/14/24, 15:53 - +61 406 711 009: Tommorow
+12/14/24, 15:53 - Donut Beauty: Sure, please can you a book a meeting here: https://calendly.com/donutbeauty/15min
+12/14/24, 15:54 - Donut Beauty: https://calendly.com/beka-kakachia777
+12/14/24, 15:54 - Donut Beauty: Actually, better on my personal session.
+12/14/24, 15:54 - +61 406 711 009: Ok
+12/14/24, 15:56 - +61 406 711 009: Done
+12/14/24, 15:59 - Donut Beauty: <Media omitted>
+12/14/24, 16:00 - +61 406 711 009: I got a lot more other small projects
+12/14/24, 16:00 - +61 406 711 009: Do you know about home assistance?
+12/14/24, 16:00 - +61 406 711 009: And google home automation stuff
+12/14/24, 16:03 - Donut Beauty: Actually, I'm working with Google Assistant SDK everyday, other than that I'm familiar with Smart Home Api, can add voice commands, cloud fullfilment, implement device state report with Raspberry Pi
+12/14/24, 16:03 - +61 406 711 009: Ok good
+12/14/24, 16:03 - Donut Beauty: It depends on the devices. What devices do you have available?
+12/14/24, 16:03 - +61 406 711 009: Do you have some project samples for me to see?
+12/14/24, 16:05 - Donut Beauty: I can create it quickly, so you can test it with an app. Which app do you have? Do you have the Google Home app?
+12/14/24, 16:05 - +61 406 711 009: Yes
+12/14/24, 16:05 - Donut Beauty: I had been working on it, but I haven't pushed the changes to GitHub
+12/14/24, 16:05 - Donut Beauty: While ago
+12/14/24, 16:06 - Donut Beauty: Which devices do you need it for?
+12/14/24, 16:06 - +61 406 711 009: Only for Google home
+12/14/24, 16:06 - Donut Beauty: I can work for sure with:
+Lights
+switches
+cameras
+speakers
+locks
+sensors
+12/14/24, 16:06 - +61 406 711 009: Let me write it all down and send it to you
+12/14/24, 16:07 - +61 406 711 009: You got email address?
+12/14/24, 16:07 - Donut Beauty: Beka.kakachia777@gmail.com
+12/14/24, 16:07 - +61 406 711 009: Thanks
+12/14/24, 16:08 - Donut Beauty: Overall, I'd set up a Raspberry Pi as a hub
+use Home Assistant or Node red as the automation platform
+connect it to Google Home, that's it
+12/14/24, 16:09 - +61 406 711 009: Yes that's my main intention
+12/14/24, 16:09 - Donut Beauty: Do you already have a Raspberry Pi set up?
+12/14/24, 16:09 - +61 406 711 009: I got raspberry pi
+12/14/24, 16:09 - +61 406 711 009: But haven't set it up yet
+12/14/24, 16:10 - Donut Beauty: Great, set up is not a bid deal, I'm curious which devices you have?
+12/14/24, 16:10 - +61 406 711 009: I will put it all down in my proposal
+12/14/24, 16:11 - +61 406 711 009: Talk later..
+12/14/24, 16:11 - +61 406 711 009: Goodnight
+12/14/24, 16:11 - +61 406 711 009: If possible please send me some samples of your previous projects
+12/14/24, 16:11 - Donut Beauty: Sure, good night. Basically, I don't think there will be any device that I won't be able to work with.
+12/14/24, 16:12 - Donut Beauty: Yes, I will. I'll push it to my Github
+12/14/24, 16:12 - Donut Beauty: https://github.com/kakachia777/

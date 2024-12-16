@@ -21,6 +21,7 @@ from advanced_utils import (
 )
 from dashboard import HealthDashboard
 from telegram_bot import HealthBot
+from google_home_handler import GoogleHomeHandler
 
 # Set up logging
 os.makedirs('logs', exist_ok=True)
@@ -51,12 +52,8 @@ class HealthSync:
             self.metrics_aggregator = HealthMetricsAggregator()
             self.notification_manager = NotificationManager()
             
-            # Initialize dashboard and bot
-            self.dashboard = HealthDashboard(port=8050)
-            self.bot = HealthBot(
-                token=os.getenv('TELEGRAM_BOT_TOKEN'),
-                health_sync=self
-            )
+            # Initialize notification systems
+            self._setup_notification_handlers()
             
             # Track sync status
             self.last_sync_status = {
@@ -77,6 +74,26 @@ class HealthSync:
         except Exception as e:
             logging.critical(f"Failed to initialize HealthSync: {str(e)}")
             raise
+            
+    def _setup_notification_handlers(self):
+        """Set up notification handlers based on configuration"""
+        # Initialize dashboard
+        self.dashboard = HealthDashboard(port=8050)
+        
+        # Initialize Telegram bot if enabled
+        if os.getenv('ENABLE_TELEGRAM', 'false').lower() == 'true':
+            self.bot = HealthBot(
+                token=os.getenv('TELEGRAM_BOT_TOKEN'),
+                health_sync=self
+            )
+            
+        # Initialize Google Home if enabled
+        if os.getenv('ENABLE_GOOGLE_HOME', 'true').lower() == 'true':
+            self.google_home = GoogleHomeHandler(
+                project_id=os.getenv('GOOGLE_HOME_PROJECT_ID'),
+                device_id=os.getenv('GOOGLE_HOME_DEVICE_ID'),
+                language_code=os.getenv('GOOGLE_HOME_LANGUAGE', 'en-US')
+            )
             
     def authenticate_services(self):
         """Authenticate with all services"""
@@ -218,10 +235,34 @@ class HealthSync:
             
         alert_text = "New Health Alerts:\n\n" + "\n".join(self.active_alerts)
         
-        # Send to Telegram (if configured)
+        # Send to Google Home
+        if hasattr(self, 'google_home'):
+            for alert in self.active_alerts:
+                alert_data = self._parse_alert(alert)
+                message = self.google_home.format_health_alert(alert_data)
+                self.google_home.send_notification(message)
+                
+        # Send to Telegram (if enabled)
         if hasattr(self, 'bot'):
             for chat_id in self._get_subscribed_chats():
                 asyncio.create_task(self.bot.send_alert(chat_id, alert_text))
+                
+    def _parse_alert(self, alert: str) -> Dict[str, Any]:
+        """Parse alert text into structured data"""
+        alert_data = {'message': alert}
+        
+        if 'blood pressure' in alert.lower():
+            alert_data['type'] = 'blood_pressure'
+        elif 'heart rate' in alert.lower():
+            alert_data['type'] = 'heart_rate'
+        elif 'weight' in alert.lower():
+            alert_data['type'] = 'weight'
+        elif 'sleep' in alert.lower():
+            alert_data['type'] = 'sleep'
+        else:
+            alert_data['type'] = 'health'
+            
+        return alert_data
                 
     def _get_subscribed_chats(self) -> List[int]:
         """Get list of subscribed Telegram chat IDs"""
@@ -248,12 +289,13 @@ class HealthSync:
             )
             dashboard_thread.start()
             
-            # Start Telegram bot in a separate thread
-            bot_thread = threading.Thread(
-                target=self.bot.run,
-                daemon=True
-            )
-            bot_thread.start()
+            # Start Telegram bot in a separate thread (if enabled)
+            if hasattr(self, 'bot'):
+                bot_thread = threading.Thread(
+                    target=self.bot.run,
+                    daemon=True
+                )
+                bot_thread.start()
             
             # Schedule real-time sync
             schedule.every(1).minutes.do(self.sync_health_data)
